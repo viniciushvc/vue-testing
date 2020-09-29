@@ -1,51 +1,34 @@
 <template>
-  <form @submit.prevent="addNewTodo">
-    <input v-model="newTodo" ref="input" type="text" />
+  <form @submit.prevent="newTodo(input)">
+    <Input v-model="input" type="text" />
 
-    <button type="submit">Submit</button>
+    <Button type="submit">Submit</Button>
   </form>
 
-  <ul>
-    <li
-      v-for="(todo, i) in listTodos"
-      :key="i"
-      :class="{ finished: todo.done }"
-      @click="toggleDone(todo)"
-    >
-      {{ todo.text }}
-    </li>
-  </ul>
+  <TodoList :todos="todos" @click="toggleTodo" @delete="deleteTodo" />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
+import useTodos from '@/modules/todos'
+
+import Input from '@/components/Input.vue'
+import Button from '@/components/Button.vue'
+import TodoList from '@/components/TodoList.vue'
+
 export default defineComponent({
+  components: {
+    Input,
+    Button,
+    TodoList,
+  },
   setup() {
-    const newTodo = ref('')
-    const listTodos = ref<Array<T>>([])
+    const input = ref('foda-se')
 
-    function addNewTodo() {
-      if (!newTodo.value) return
+    const { todos, newTodo, toggleTodo, deleteTodo } = useTodos()
 
-      listTodos.value.push({
-        text: newTodo.value,
-      })
-
-      newTodo.value = ''
-    }
-
-    function toggleDone(todo: any) {
-      todo.done = !todo.done
-    }
-
-    return { newTodo, listTodos, addNewTodo, toggleDone }
+    return { input, todos, newTodo, toggleTodo, deleteTodo }
   },
 })
 </script>
-
-<style lang="scss" scoped>
-.finished {
-  text-decoration: line-through;
-}
-</style>
