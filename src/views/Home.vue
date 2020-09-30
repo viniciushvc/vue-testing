@@ -1,18 +1,26 @@
 <template>
   <form @submit.prevent="newTodo(input)">
-    <Input v-model="input" type="text" />
-
-    <Button type="submit">Submit</Button>
+    <Input v-model="input" placeholder="Type and press ENTER" />
   </form>
 
-  <TodoList :todos="todos" @click="toggleTodo" @delete="deleteTodo" />
+  <TodoList :todos="filteredTodos" @click="toggleTodo" @delete="deleteTodo" />
+
+  <Button @click="view = ''">All</Button>
+  <Button @click="view = 'actives'">Actives</Button>
+  <Button @click="view = 'done'">Dones</Button>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 
+/**
+ * TODO's logic
+ */
 import useTodos from '@/modules/todos'
 
+/**
+ * Components
+ */
 import Input from '@/components/Input.vue'
 import Button from '@/components/Button.vue'
 import TodoList from '@/components/TodoList.vue'
@@ -24,11 +32,12 @@ export default defineComponent({
     TodoList,
   },
   setup() {
-    const input = ref('foda-se')
+    const input = ref('')
 
-    const { todos, newTodo, toggleTodo, deleteTodo } = useTodos()
-
-    return { input, todos, newTodo, toggleTodo, deleteTodo }
+    /**
+     * Export all useTodos methods to template
+     */
+    return { ...useTodos(), input }
   },
 })
 </script>
