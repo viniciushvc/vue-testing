@@ -1,5 +1,5 @@
 <template>
-  <button @click="e => $emit('click', e)">
+  <button @click="e => $emit('click', e)" :class="classStyles()">
     <slot />
   </button>
 </template>
@@ -13,6 +13,17 @@ export default defineComponent({
       type: String,
       default: 'button',
     },
+    fullWidth: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props) {
+    function classStyles() {
+      return [{ fullWidth: props.fullWidth }]
+    }
+
+    return { classStyles }
   },
 })
 </script>
@@ -31,5 +42,9 @@ button {
   &:hover {
     background-color: #666;
   }
+}
+
+.fullWidth {
+  width: 100%;
 }
 </style>
