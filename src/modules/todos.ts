@@ -1,10 +1,11 @@
 import { computed, ref } from 'vue'
+import { getStorage, setStorage } from '@/helpers/storage'
 
 export default function useTodos() {
   /**
    * Original array list
    */
-  const todos = ref<Todo[]>([])
+  const todos = ref<Todo[]>(getStorage())
 
   /**
    * Filter type
@@ -36,6 +37,11 @@ export default function useTodos() {
       id: new Date().valueOf(),
       text,
     })
+
+    /**
+     * Save on localStorage
+     */
+    setStorage(todos.value)
   }
 
   /**
@@ -52,6 +58,11 @@ export default function useTodos() {
    */
   function deleteTodo(todo: Todo) {
     todos.value = todos.value.filter(item => item.id !== todo.id)
+
+    /**
+     * Save on localStorage
+     */
+    setStorage(todos.value)
   }
 
   /**
