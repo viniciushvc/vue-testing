@@ -11,7 +11,7 @@
       {{ todo.text }}
     </div>
 
-    <Button @click.stop="$emit('delete', todo)">Delete</Button>
+    <Button @click="$emit('delete', todo)">Delete</Button>
   </div>
 </template>
 
