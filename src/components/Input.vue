@@ -1,26 +1,19 @@
 <template>
   <input
-    v-model="content"
     type="text"
-    :placeholder="placeholder"
-    @input="e => $emit('input', e.target.value)"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Input',
   props: {
-    placeholder: {
-      type: String,
-    },
-  },
-  setup() {
-    const content = ref('')
-
-    return { content }
+    modelValue: String,
+    placeholder: String,
   },
 })
 </script>
