@@ -3,7 +3,7 @@ import { getStorage, setStorage } from '@/helpers/storage'
 
 export default function useTodos() {
   /**
-   * Original array list
+   * Original TODO list
    */
   const todos = ref<Todo[]>(getStorage())
 
@@ -13,7 +13,7 @@ export default function useTodos() {
   const view = ref()
 
   /**
-   * Show filtered TODOS
+   * Filtered TODO Lust
    */
   const filteredTodos = computed(() => {
     switch (view.value) {
@@ -45,15 +45,20 @@ export default function useTodos() {
   }
 
   /**
-   * Set clicked TODO to done or not
+   * Set the clicked TODO to done or not
    * @param todo Clicked TODO
    */
   function toggleTodo(todo: Todo) {
     todo.done = !todo.done
+
+    /**
+     * Save on localStorage
+     */
+    setStorage(todos.value)
   }
 
   /**
-   * Delete clicked TODO
+   * Delete the the clicked TODO
    * @param todo Clicked TODO
    */
   function deleteTodo(todo: Todo) {
@@ -66,7 +71,7 @@ export default function useTodos() {
   }
 
   /**
-   * Return const and functions to View HOME
+   * Return TODO methods
    */
   return {
     filteredTodos,
