@@ -14,12 +14,12 @@
 import { defineComponent, ref } from 'vue'
 
 /**
- * TODO's logic
+ * TODO modules
  */
 import useTodos from '@/modules/todos'
 
 /**
- * Components
+ * Importing components
  */
 import Input from '@/components/Input.vue'
 import Button from '@/components/Button.vue'
