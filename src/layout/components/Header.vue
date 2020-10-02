@@ -1,7 +1,7 @@
 <template>
   <Container>
     <h1>
-      Vue 3 TODO List
+      TODO - Vue 3 + Typescript
     </h1>
   </Container>
 </template>
