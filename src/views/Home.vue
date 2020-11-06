@@ -5,9 +5,11 @@
 
   <TodoList :todos="filteredTodos" @click="toggleTodo" @delete="deleteTodo" />
 
-  <Button @click="view = ''">All</Button>
-  <Button @click="view = 'actives'">Actives</Button>
-  <Button @click="view = 'done'">Dones</Button>
+  <div class="action-buttons">
+    <Button @click="view = ''">All</Button>
+    <Button @click="view = 'actives'">Actives</Button>
+    <Button @click="view = 'done'">Dones</Button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -33,11 +35,22 @@ export default defineComponent({
   },
   setup() {
     const input = ref('')
+    const { view, filteredTodos, newTodo, toggleTodo, deleteTodo } = useTodos()
 
     /**
      * Export all useTodos methods to template
      */
-    return { ...useTodos(), input }
+    return { view, filteredTodos, newTodo, toggleTodo, deleteTodo, input }
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.action-buttons {
+  margin-top: 10px;
+
+  & button {
+    margin-right: 10px;
+  }
+}
+</style>

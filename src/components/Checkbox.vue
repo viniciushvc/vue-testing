@@ -2,6 +2,7 @@
   <div class="checkbox">
     <input
       :id="id"
+      :checked="modelValue"
       type="checkbox"
       @input="$emit('input', $event.target.checked)"
       @click="$emit('click', $event)"
@@ -19,8 +20,8 @@ import { nanoid } from 'nanoid'
 export default defineComponent({
   name: 'Checkbox',
   props: {
-    // https://v3.vuejs.org/guide/migration/v-model.html#overview
     modelValue: Boolean,
+    checked: Boolean,
   },
   setup() {
     const id = nanoid()
@@ -33,32 +34,32 @@ export default defineComponent({
 <style lang="scss" scoped>
 .checkbox {
   position: relative;
-  width: 31px;
-  height: 29px;
+  width: 28px;
+  height: 28px;
 
   label {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 28px;
-    left: 0;
     position: absolute;
     top: 0;
+    left: 0;
     width: 28px;
+    height: 28px;
+    background-color: #fff;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 50%;
 
     &:after {
+      top: 8px;
+      left: 7px;
+      height: 6px;
+      width: 12px;
+      opacity: 0;
+      position: absolute;
       border: 2px solid #fff;
       border-top: none;
       border-right: none;
       content: '';
-      height: 6px;
-      left: 7px;
-      opacity: 0;
-      position: absolute;
-      top: 8px;
       transform: rotate(-45deg);
-      width: 12px;
     }
   }
 

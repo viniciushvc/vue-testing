@@ -1,13 +1,12 @@
 <template>
   <Header />
 
-  <main>
-    <Container>
+  <Container>
+    <main>
       <slot />
-    </Container>
-  </main>
-
-  <Footer />
+    </main>
+    <Footer />
+  </Container>
 </template>
 
 <script>

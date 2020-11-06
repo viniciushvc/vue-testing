@@ -30,14 +30,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 button {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--color);
   padding: 10px 20px;
   border: 1px solid #000;
   outline: none;
-  transition: 0.3s;
+  transition: var(--transition);
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
 
   &:hover {
     background-color: #666;

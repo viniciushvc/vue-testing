@@ -23,7 +23,9 @@ input {
   display: block;
   width: 100%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: var(--borderRadius);
+  background-color: var(--bg);
+  color: var(--color-secondary);
   outline: none;
   font-size: 18px;
   border: 1px solid #ccc;

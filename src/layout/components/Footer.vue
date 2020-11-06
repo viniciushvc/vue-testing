@@ -1,27 +1,15 @@
 <template>
   <footer>
-    <Container>
-      Created by
-      <a
-        href="https://github.com/viniciushvc/"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        Vinicius Vicentini
-      </a>
-    </Container>
+    Created by
+    <a
+      href="https://github.com/viniciushvc/"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      Vinicius Vicentini
+    </a>
   </footer>
 </template>
-
-<script>
-import Container from '@/components/Container.vue'
-
-export default {
-  components: {
-    Container,
-  },
-}
-</script>
 
 <style lang="scss" scoped>
 footer {
@@ -31,6 +19,11 @@ footer {
 
   a {
     text-decoration: none;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--color-vue);
+    }
   }
 }
 </style>

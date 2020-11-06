@@ -42,16 +42,17 @@ export default defineComponent({
   font-weight: 600;
   padding: 20px;
   margin: 10px 0;
-  transition: 0.3s;
-  border-radius: 5px;
-  background-color: #fff;
+  transition: var(--transition);
+  border-radius: var(--borderRadius);
+  background-color: var(--bg-secondary);
   border: 1px solid #ddd;
 
   .todo-checkbox {
-    margin-right: 10px;
+    margin-right: 20px;
   }
 
   .todo-text {
+    color: var(--color-secondary);
     width: 100%;
   }
 
