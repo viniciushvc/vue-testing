@@ -13,7 +13,7 @@ export default function useTodos() {
   const view = ref()
 
   /**
-   * Filtered TODO Lust
+   * Filtered TODO List
    */
   const filteredTodos = computed(() => {
     switch (view.value) {
